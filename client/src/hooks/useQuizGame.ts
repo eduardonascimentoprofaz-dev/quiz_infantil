@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { quizQuestions } from "@/lib/quizData";
+import { quizQuestionsExpanded } from "@/lib/quizDataExpanded";
 
 export interface GameState {
   currentQuestionIndex: number;
@@ -22,8 +22,8 @@ export const useQuizGame = () => {
     correctAnswers: 0,
   });
 
-  const currentQuestion = quizQuestions[gameState.currentQuestionIndex];
-  const totalQuestions = quizQuestions.length;
+  const currentQuestion = quizQuestionsExpanded[gameState.currentQuestionIndex];
+  const totalQuestions = quizQuestionsExpanded.length;
   const progress = ((gameState.currentQuestionIndex + 1) / totalQuestions) * 100;
 
   const selectAnswer = useCallback((answerIndex: number) => {

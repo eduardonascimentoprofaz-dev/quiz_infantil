@@ -12,7 +12,17 @@ interface QuestionCardProps {
   onShowHint: () => void;
   showHint: boolean;
   hint: string;
+  animeImage?: number;
 }
+
+// Mapeamento de imagens de anime
+const animeImages: { [key: number]: string } = {
+  1: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/anime-character-1-cs4RzmB9hxP9cuZDzJsK2F.webp",
+  2: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/anime-character-2-SXRw8oxxnbG2qe3mXEPPgb.webp",
+  3: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/anime-character-3-FKARYnxpADYmSKbkDxRx9o.webp",
+  4: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/anime-character-4-i3LYTnvpxwvq9fvqV9uTCf.webp",
+  5: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/anime-character-5-PtsyUsjhZskTS7PHTotAxy.webp",
+};
 
 export default function QuestionCard({
   question,
@@ -24,11 +34,29 @@ export default function QuestionCard({
   onShowHint,
   showHint,
   hint,
+  animeImage,
 }: QuestionCardProps) {
+  const imageUrl = animeImage ? animeImages[animeImage] : null;
+
   return (
     <div className="flex flex-col items-center gap-4 sm:gap-6 px-3 sm:px-4 w-full">
-      {/* Mascot */}
-      <Mascot state={answered ? "happy" : "thinking"} />
+      {/* Anime Character Image or Mascot */}
+      {imageUrl ? (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5 }}
+          className="h-32 w-32 sm:h-40 sm:w-40 flex items-center justify-center"
+        >
+          <img
+            src={imageUrl}
+            alt="Personagem de anime"
+            className="h-full w-full object-contain drop-shadow-lg"
+          />
+        </motion.div>
+      ) : (
+        <Mascot state={answered ? "happy" : "thinking"} />
+      )}
 
       {/* Question */}
       <motion.div
