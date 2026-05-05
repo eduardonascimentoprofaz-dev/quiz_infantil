@@ -1,9 +1,20 @@
+import { useState } from "react";
 import { useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import RankingBoard from "@/components/RankingBoard";
 
 export default function Home() {
   const [, navigate] = useLocation();
+  const [showRanking, setShowRanking] = useState(false);
+
+  if (showRanking) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 flex flex-col items-center justify-center px-3 sm:px-4 py-6 sm:py-8">
+        <RankingBoard onClose={() => setShowRanking(false)} />
+      </div>
+    );
+  }
 
   return (
     <div
@@ -50,7 +61,7 @@ export default function Home() {
           <ul className="space-y-2 sm:space-y-3 text-sm sm:text-base text-gray-700">
             <li className="flex items-start gap-2 sm:gap-3">
               <span className="text-xl sm:text-2xl flex-shrink-0">❓</span>
-              <span>Responda perguntas divertidas</span>
+              <span>Responda 250 perguntas divertidas</span>
             </li>
             <li className="flex items-start gap-2 sm:gap-3">
               <span className="text-xl sm:text-2xl flex-shrink-0">💡</span>
@@ -62,20 +73,30 @@ export default function Home() {
             </li>
             <li className="flex items-start gap-2 sm:gap-3">
               <span className="text-xl sm:text-2xl flex-shrink-0">🏆</span>
-              <span>Veja seu resultado final</span>
+              <span>Entre no ranking dos melhores</span>
             </li>
           </ul>
         </div>
 
-        <Button
-          onClick={() => navigate("/quiz")}
-          className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-4 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
-        >
-          🚀 Começar Jogo
-        </Button>
+        <div className="flex flex-col gap-3 sm:gap-4 mb-4 sm:mb-6">
+          <Button
+            onClick={() => navigate("/quiz")}
+            className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-bold py-4 sm:py-6 text-base sm:text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
+          >
+            🚀 Começar Jogo
+          </Button>
 
-        <p className="text-xs sm:text-sm text-gray-500 mt-4 sm:mt-6">
-          10 perguntas • Sem limite de tempo • Divertido e educativo!
+          <Button
+            onClick={() => setShowRanking(true)}
+            variant="outline"
+            className="w-full border-purple-300 text-purple-600 hover:bg-purple-50 font-bold py-4 sm:py-6 text-base sm:text-lg rounded-xl"
+          >
+            🏆 Ver Ranking
+          </Button>
+        </div>
+
+        <p className="text-xs sm:text-sm text-gray-500">
+          250 perguntas • 12 categorias • Sistema de ranking • Divertido e educativo!
         </p>
       </motion.div>
 
