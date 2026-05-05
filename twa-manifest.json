@@ -1,0 +1,40 @@
+{
+  "packageId": "com.quizinfantil.app",
+  "host": "quizgame-8qxx7zqn.manus.space",
+  "launcherName": "Quiz Infantil",
+  "launcherIcon": "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/icon-512-kngWBG39hqzTYrU5sQiXPr.webp",
+  "primaryColor": "#6366f1",
+  "secondaryColor": "#ec4899",
+  "tertiaryColor": "#fbbf24",
+  "backgroundColor": "#ffffff",
+  "themeColor": "#6366f1",
+  "orientation": "portrait",
+  "startUrl": "/",
+  "display": "standalone",
+  "shortcuts": [
+    {
+      "name": "Começar Jogo",
+      "short_name": "Jogar",
+      "url": "/quiz",
+      "icon": "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/icon-192-4vzGPqocnYbYKG69zhGcS3.webp"
+    },
+    {
+      "name": "Ver Ranking",
+      "short_name": "Ranking",
+      "url": "/?ranking=true",
+      "icon": "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/icon-192-4vzGPqocnYbYKG69zhGcS3.webp"
+    }
+  ],
+  "features": {
+    "offline": true
+  },
+  "appVersionCode": 1,
+  "appVersionName": "1.0.0",
+  "minSdkVersion": 21,
+  "targetSdkVersion": 34,
+  "enableNotifications": false,
+  "signingKey": {
+    "path": "quiz-infantil.keystore",
+    "alias": "quiz_infantil"
+  }
+}
