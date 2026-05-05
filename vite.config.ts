@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { defineConfig, type Plugin, type ViteDevServer } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
+import { VitePWA } from "vite-plugin-pwa";
 
 // =============================================================================
 // Manus Debug Collector - Vite Plugin
@@ -203,7 +204,90 @@ function vitePluginStorageProxy(): Plugin {
   };
 }
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), vitePluginManusDebugCollector(), vitePluginStorageProxy()];
+const plugins = [
+  react(),
+  tailwindcss(),
+  jsxLocPlugin(),
+  vitePluginManusRuntime(),
+  vitePluginManusDebugCollector(),
+  vitePluginStorageProxy(),
+  VitePWA({
+    registerType: "autoUpdate",
+    includeAssets: [
+      "favicon.ico",
+      "manifest.json",
+    ],
+    manifest: {
+      name: "Quiz Infantil - Jogo de Perguntas e Respostas",
+      short_name: "Quiz Infantil",
+      description:
+        "Um jogo divertido e educativo com 250 perguntas, pistas, sistema de ranking e personagens de anime. Perfeito para crianças!",
+      theme_color: "#6366f1",
+      background_color: "#ffffff",
+      display: "standalone",
+      orientation: "portrait-primary",
+      scope: "/",
+      start_url: "/",
+      icons: [
+        {
+          src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/icon-192-4vzGPqocnYbYKG69zhGcS3.webp",
+          sizes: "192x192",
+          type: "image/webp",
+          purpose: "any",
+        },
+        {
+          src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/icon-512-kngWBG39hqzTYrU5sQiXPr.webp",
+          sizes: "512x512",
+          type: "image/webp",
+          purpose: "any",
+        },
+      ],
+      categories: ["education", "games"],
+      screenshots: [
+        {
+          src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/screenshot-540-n4GHz7zGX8AhNmjcNcvgsv.webp",
+          sizes: "540x720",
+          type: "image/webp",
+          form_factor: "narrow",
+        },
+        {
+          src: "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/screenshot-1280-SjgMP9mkEp8UEsDc2DFvJ4.webp",
+          sizes: "1280x720",
+          type: "image/webp",
+          form_factor: "wide",
+        },
+      ],
+    },
+    workbox: {
+      globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff,woff2,ttf,eot}"],
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024, // 5 MB
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/d2xsxph8kpxj0f\.cloudfront\.net\/.*/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "image-cache",
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+            },
+          },
+        },
+        {
+          urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "google-fonts-stylesheets",
+            expiration: {
+              maxEntries: 20,
+              maxAgeSeconds: 60 * 60 * 24 * 365, // 1 year
+            },
+          },
+        },
+      ],
+    },
+  }),
+];
 
 export default defineConfig({
   plugins,

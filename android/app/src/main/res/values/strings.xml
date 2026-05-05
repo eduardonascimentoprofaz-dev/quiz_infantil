@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Quiz Infantil</string>
+    <string name="title_activity_main">Quiz Infantil</string>
+    <string name="package_name">com.quizinfantil.app</string>
+    <string name="custom_url_scheme">com.quizinfantil.app</string>
+</resources>
