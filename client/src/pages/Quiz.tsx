@@ -87,7 +87,7 @@ export default function Quiz() {
       }}
     >
       {/* Header with Difficulty and Quit Button */}
-        <div className="flex justify-between items-center px-4 py-4 bg-white/80 backdrop-blur border-b-2 border-purple-200">
+      <div className="flex justify-between items-center px-4 py-4 bg-white/80 backdrop-blur border-b-2 border-purple-200">
         <div>
           <h1 className="text-2xl font-bold text-blue-600">🎮 Hora da Ventura</h1>
           <p className="text-sm text-gray-600">
