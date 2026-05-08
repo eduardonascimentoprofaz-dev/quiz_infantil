@@ -7,7 +7,6 @@ import GameOver from "@/components/GameOver";
 import AnswerFeedback from "@/components/AnswerFeedback";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { getQuestionsByDifficulty, shuffleQuestions } from "@/lib/quizDataExpanded800";
 
 export default function Quiz() {
   const [, params] = useRoute("/quiz/:difficulty");
@@ -24,24 +23,12 @@ export default function Quiz() {
     nextQuestion,
     toggleHint,
     resetGame,
-  } = useQuizGame();
+  } = useQuizGame(difficulty);
 
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  // Load questions based on difficulty
-  useEffect(() => {
-    const allQuestions = getQuestionsByDifficulty(difficulty);
-    const shuffled = shuffleQuestions(allQuestions);
-    
-    // Limit questions based on difficulty
-    const questionLimit = difficulty === "easy" ? 100 : difficulty === "medium" ? 150 : 200;
-    const limitedQuestions = shuffled.slice(0, questionLimit);
-    
-    // Update quiz game with new questions
-    // This would need to be implemented in useQuizGame hook
-    console.log(`Loaded ${limitedQuestions.length} questions for ${difficulty} difficulty`);
-  }, [difficulty]);
+
 
   useEffect(() => {
     if (gameState.answered) {

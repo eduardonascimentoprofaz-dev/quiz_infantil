@@ -1,5 +1,5 @@
-import { useState, useCallback } from "react";
-import { quizQuestionsExpanded } from "@/lib/quizDataExpanded";
+import { useState, useCallback, useEffect } from "react";
+import { QUIZ_QUESTIONS, getQuestionsByDifficulty, shuffleQuestions, type QuizQuestion } from "@/lib/quizDataExpanded800";
 
 export interface GameState {
   currentQuestionIndex: number;
@@ -11,7 +11,7 @@ export interface GameState {
   correctAnswers: number;
 }
 
-export const useQuizGame = () => {
+export const useQuizGame = (difficulty: 'easy' | 'medium' | 'hard' = 'easy') => {
   const [gameState, setGameState] = useState<GameState>({
     currentQuestionIndex: 0,
     score: 0,
@@ -22,12 +22,37 @@ export const useQuizGame = () => {
     correctAnswers: 0,
   });
 
-  const currentQuestion = quizQuestionsExpanded[gameState.currentQuestionIndex];
-  const totalQuestions = quizQuestionsExpanded.length;
-  const progress = ((gameState.currentQuestionIndex + 1) / totalQuestions) * 100;
+  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+
+  // Carregar perguntas baseado na dificuldade
+  useEffect(() => {
+    const allQuestions = getQuestionsByDifficulty(difficulty);
+    const shuffled = shuffleQuestions(allQuestions);
+    
+    // Limitar perguntas baseado na dificuldade
+    const questionLimit = difficulty === 'easy' ? 100 : difficulty === 'medium' ? 150 : 200;
+    const limitedQuestions = shuffled.slice(0, questionLimit);
+    
+    setQuestions(limitedQuestions);
+    
+    // Resetar estado do jogo
+    setGameState({
+      currentQuestionIndex: 0,
+      score: 0,
+      showHint: false,
+      selectedAnswer: null,
+      answered: false,
+      gameOver: false,
+      correctAnswers: 0,
+    });
+  }, [difficulty]);
+
+  const currentQuestion = questions[gameState.currentQuestionIndex];
+  const totalQuestions = questions.length;
+  const progress = totalQuestions > 0 ? ((gameState.currentQuestionIndex + 1) / totalQuestions) * 100 : 0;
 
   const selectAnswer = useCallback((answerIndex: number) => {
-    if (gameState.answered) return;
+    if (gameState.answered || !currentQuestion) return;
 
     const isCorrect = answerIndex === currentQuestion.correctAnswer;
     const points = isCorrect ? 10 : 0;
@@ -39,7 +64,7 @@ export const useQuizGame = () => {
       score: prev.score + points,
       correctAnswers: prev.correctAnswers + (isCorrect ? 1 : 0),
     }));
-  }, [gameState.answered, currentQuestion.correctAnswer]);
+  }, [gameState.answered, currentQuestion]);
 
   const nextQuestion = useCallback(() => {
     if (gameState.currentQuestionIndex + 1 >= totalQuestions) {
@@ -79,7 +104,7 @@ export const useQuizGame = () => {
 
   return {
     gameState,
-    currentQuestion,
+    currentQuestion: currentQuestion || { question: 'Carregando...', options: [], correctAnswer: 0, hint: '', category: '', difficulty: 'easy', id: 0 },
     totalQuestions,
     progress,
     selectAnswer,
