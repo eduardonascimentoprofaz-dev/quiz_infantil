@@ -1,7 +1,7 @@
 {
-  "name": "Quiz Infantil - Jogo de Perguntas e Respostas",
-  "short_name": "Quiz Infantil",
-  "description": "Um jogo divertido e educativo com 250 perguntas, pistas, sistema de ranking e personagens de anime. Perfeito para crianças!",
+  "name": "Hora da Ventura - Jogo de Perguntas e Respostas",
+  "short_name": "Hora da Ventura",
+  "description": "Um jogo divertido e educativo com 800 perguntas em 3 níveis de dificuldade, pistas, sistema de ranking e personagens de anime. Perfeito para crianças!",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -41,7 +41,7 @@
     {
       "name": "Começar Jogo",
       "short_name": "Jogar",
-      "description": "Comece uma nova partida do Quiz Infantil",
+      "description": "Comece uma nova partida da Hora da Ventura",
       "url": "/quiz",
       "icons": [
         {

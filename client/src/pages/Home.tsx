@@ -44,10 +44,10 @@ export default function Home() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4 animate-bounce">
-            🎮 Quiz Infantil
+            🎮 Hora da Ventura
           </h1>
           <p className="text-xl md:text-2xl text-gray-700 font-semibold mb-2">
-            Bem-vindo à aventura do conhecimento!
+            Bem-vindo à Hora da Ventura!
           </p>
           <p className="text-lg text-gray-600">
             Escolha seu nível de dificuldade e comece a jogar
