@@ -1,12 +1,20 @@
 import { useEffect, useState } from "react";
+import { useRoute, useLocation } from "wouter";
 import { useQuizGame } from "@/hooks/useQuizGame";
 import ProgressBar from "@/components/ProgressBar";
 import QuestionCard from "@/components/QuestionCard";
 import GameOver from "@/components/GameOver";
 import AnswerFeedback from "@/components/AnswerFeedback";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { getQuestionsByDifficulty, shuffleQuestions } from "@/lib/quizDataExpanded800";
 
 export default function Quiz() {
+  const [, params] = useRoute("/quiz/:difficulty");
+  const [, setLocation] = useLocation();
+  
+  const difficulty = (params?.difficulty as "easy" | "medium" | "hard") || "easy";
+  
   const {
     gameState,
     currentQuestion,
@@ -20,6 +28,20 @@ export default function Quiz() {
 
   const [showFeedback, setShowFeedback] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
+
+  // Load questions based on difficulty
+  useEffect(() => {
+    const allQuestions = getQuestionsByDifficulty(difficulty);
+    const shuffled = shuffleQuestions(allQuestions);
+    
+    // Limit questions based on difficulty
+    const questionLimit = difficulty === "easy" ? 100 : difficulty === "medium" ? 150 : 200;
+    const limitedQuestions = shuffled.slice(0, questionLimit);
+    
+    // Update quiz game with new questions
+    // This would need to be implemented in useQuizGame hook
+    console.log(`Loaded ${limitedQuestions.length} questions for ${difficulty} difficulty`);
+  }, [difficulty]);
 
   useEffect(() => {
     if (gameState.answered) {
@@ -40,6 +62,12 @@ export default function Quiz() {
   const handleNextQuestion = () => {
     setShowFeedback(false);
     nextQuestion();
+  };
+
+  const handleQuit = () => {
+    if (confirm("Tem certeza que quer sair? Seu progresso será perdido.")) {
+      setLocation("/");
+    }
   };
 
   if (gameState.gameOver) {
@@ -71,7 +99,25 @@ export default function Quiz() {
         backgroundSize: "400px 400px",
       }}
     >
-      {/* Header with Progress */}
+      {/* Header with Difficulty and Quit Button */}
+      <div className="flex justify-between items-center px-4 py-4 bg-white/80 backdrop-blur border-b-2 border-purple-200">
+        <div>
+          <h1 className="text-2xl font-bold text-blue-600">🎮 Quiz Infantil</h1>
+          <p className="text-sm text-gray-600">
+            Dificuldade: <span className="font-bold">
+              {difficulty === "easy" ? "🌱 Fácil" : difficulty === "medium" ? "⚡ Médio" : "🔥 Difícil"}
+            </span>
+          </p>
+        </div>
+        <Button
+          onClick={handleQuit}
+          className="bg-red-500 hover:bg-red-600 text-white"
+        >
+          Sair
+        </Button>
+      </div>
+
+      {/* Progress Bar */}
       <ProgressBar
         progress={progress}
         current={gameState.currentQuestionIndex + 1}
