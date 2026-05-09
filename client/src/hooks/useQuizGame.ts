@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { QUIZ_QUESTIONS, getQuestionsByDifficulty, shuffleQuestions, type QuizQuestion } from "@/lib/quizDataExpanded800";
+import { QUIZ_QUESTIONS, getQuestionsByDifficulty, type QuizQuestion } from "@/lib/quizDataExpanded800";
 
 export interface GameState {
   currentQuestionIndex: number;
@@ -27,7 +27,7 @@ export const useQuizGame = (difficulty: 'easy' | 'medium' | 'hard' = 'easy') => 
   // Carregar perguntas baseado na dificuldade
   useEffect(() => {
     const allQuestions = getQuestionsByDifficulty(difficulty);
-    const shuffled = shuffleQuestions(allQuestions);
+    const shuffled = [...allQuestions].sort(() => Math.random() - 0.5);
     
     // Limitar perguntas baseado na dificuldade
     const questionLimit = difficulty === 'easy' ? 100 : difficulty === 'medium' ? 150 : 200;
