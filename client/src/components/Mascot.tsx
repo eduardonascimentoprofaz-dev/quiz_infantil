@@ -1,15 +1,25 @@
 import { motion } from "framer-motion";
+import { useMascot } from "@/contexts/MascotContext";
 
 interface MascotProps {
   state: "thinking" | "happy" | "celebrating";
 }
 
 export default function Mascot({ state }: MascotProps) {
+  const { gender } = useMascot();
+
   const getImageUrl = () => {
-    if (state === "thinking") {
-      return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-thinking-anime-transparent-TRBryRiaJWyDah4bxzmbiQ.webp";
+    if (gender === "female") {
+      if (state === "thinking") {
+        return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-thinking-anime-transparent-TRBryRiaJWyDah4bxzmbiQ.webp";
+      }
+      return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-happy-anime-transparent-RsR6tayRbLFgjw3aN3oMYy.webp";
+    } else {
+      if (state === "thinking") {
+        return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-thinking-male-anime-SXHWp4kXmRUd9Ht3DkaHX8.webp";
+      }
+      return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-happy-male-anime-7fGJwHNsMkT3Ze8fboGmxo.webp";
     }
-    return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-happy-anime-transparent-RsR6tayRbLFgjw3aN3oMYy.webp";
   };
 
   const getAnimation = () => {
@@ -32,6 +42,7 @@ export default function Mascot({ state }: MascotProps) {
 
   return (
     <motion.div
+      key={`${gender}-${state}`}
       className="flex justify-center mb-4"
       animate={getAnimation()}
       transition={{

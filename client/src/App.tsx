@@ -5,6 +5,7 @@ import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { MultiplayerProvider } from "./contexts/MultiplayerContext";
+import { MascotProvider } from "./contexts/MascotContext";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
 import MultiplayerSetup from "./pages/MultiplayerSetup";
@@ -39,12 +40,14 @@ function App() {
         defaultTheme="light"
         // switchable
       >
-        <MultiplayerProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Router />
-          </TooltipProvider>
-        </MultiplayerProvider>
+        <MascotProvider>
+          <MultiplayerProvider>
+            <TooltipProvider>
+              <Toaster />
+              <Router />
+            </TooltipProvider>
+          </MultiplayerProvider>
+        </MascotProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

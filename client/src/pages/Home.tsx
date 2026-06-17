@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Trophy, Zap, Brain } from 'lucide-react';
 import RankingBoard from '@/components/RankingBoard';
+import MascotSelector from '@/components/MascotSelector';
 import { QUIZ_QUESTIONS } from '@/lib/quizDataExpanded800';
 
 // Calcular quantidade de perguntas por categoria
@@ -87,6 +88,14 @@ export default function Home() {
           <p className="text-lg md:text-xl text-white drop-shadow-md font-semibold">
             Escolha seu nível de dificuldade e comece a jogar!
           </p>
+        </div>
+
+        {/* Mascot Selector */}
+        <div className="mb-8 md:mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-white drop-shadow-lg mb-4 text-center">
+            👥 Escolha seu Mascote
+          </h2>
+          <MascotSelector />
         </div>
 
         {/* Difficulty Selection Cards */}
