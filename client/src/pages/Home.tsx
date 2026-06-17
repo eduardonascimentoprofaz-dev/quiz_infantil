@@ -174,8 +174,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Ranking Button - Compacto */}
-        <div className="flex justify-center mb-8">
+        {/* Multiplayer and Ranking Buttons */}
+        <div className="flex justify-center gap-4 mb-8 flex-wrap">
+          <Button
+            onClick={() => setLocation('/multiplayer-setup')}
+            className="bg-gradient-to-r from-purple-500 to-indigo-500 hover:from-purple-600 hover:to-indigo-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all"
+          >
+            👥 Modo Multiplayer
+          </Button>
           <Button
             onClick={() => setShowRanking(true)}
             className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all"

@@ -4,8 +4,12 @@ import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { MultiplayerProvider } from "./contexts/MultiplayerContext";
 import Home from "./pages/Home";
 import Quiz from "./pages/Quiz";
+import MultiplayerSetup from "./pages/MultiplayerSetup";
+import MultiplayerGame from "./pages/MultiplayerGame";
+import MultiplayerResults from "./pages/MultiplayerResults";
 
 
 function Router() {
@@ -13,6 +17,9 @@ function Router() {
     <Switch>
       <Route path={"/"} component={Home} />
       <Route path={"/quiz/:difficulty"} component={Quiz} />
+      <Route path={"/multiplayer-setup"} component={MultiplayerSetup} />
+      <Route path={"/multiplayer-game"} component={MultiplayerGame} />
+      <Route path={"/multiplayer-results"} component={MultiplayerResults} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -32,10 +39,12 @@ function App() {
         defaultTheme="light"
         // switchable
       >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <MultiplayerProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Router />
+          </TooltipProvider>
+        </MultiplayerProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
