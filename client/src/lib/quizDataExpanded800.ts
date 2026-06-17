@@ -349,3 +349,15 @@ export function getRandomQuestions(count: number, difficulty?: 'easy' | 'medium'
 export function shuffleQuestions(questions: QuizQuestion[]): QuizQuestion[] {
   return [...questions].sort(() => Math.random() - 0.5);
 }
+
+export function shuffleOptions(question: QuizQuestion): QuizQuestion {
+  const indices = [0, 1, 2, 3];
+  const shuffledIndices = indices.sort(() => Math.random() - 0.5);
+  const newCorrectAnswerIndex = shuffledIndices.indexOf(question.correctAnswer);
+  const shuffledOptions = shuffledIndices.map(i => question.options[i]);
+  return {
+    ...question,
+    options: shuffledOptions,
+    correctAnswer: newCorrectAnswerIndex
+  };
+}

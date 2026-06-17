@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { QUIZ_QUESTIONS, getQuestionsByDifficulty, type QuizQuestion } from "@/lib/quizDataExpanded800";
+import { QUIZ_QUESTIONS, getQuestionsByDifficulty, shuffleOptions, type QuizQuestion } from "@/lib/quizDataExpanded800";
 
 export interface GameState {
   currentQuestionIndex: number;
@@ -47,7 +47,8 @@ export const useQuizGame = (difficulty: 'easy' | 'medium' | 'hard' = 'easy') => 
     });
   }, [difficulty]);
 
-  const currentQuestion = questions[gameState.currentQuestionIndex];
+  const baseQuestion = questions[gameState.currentQuestionIndex];
+  const currentQuestion = baseQuestion ? shuffleOptions(baseQuestion) : undefined;
   const totalQuestions = questions.length;
   const progress = totalQuestions > 0 ? ((gameState.currentQuestionIndex + 1) / totalQuestions) * 100 : 0;
 

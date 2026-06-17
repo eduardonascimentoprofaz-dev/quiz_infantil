@@ -174,41 +174,14 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Stats and Ranking */}
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
-          {/* Stats */}
-          <Card className="p-6 bg-white/90 backdrop-blur border-2 border-blue-400 hover:shadow-lg transition-all">
-            <h3 className="text-2xl font-bold text-blue-700 mb-4 flex items-center gap-2">
-              <Brain className="w-6 h-6" />
-              Sobre o Jogo
-            </h3>
-            <ul className="space-y-2 text-gray-800 font-semibold">
-              <li>📚 <strong>{QUIZ_QUESTIONS.length} perguntas</strong> em {categoryStats.length} categorias</li>
-              <li>🎨 <strong>Personagens de anime</strong> incríveis</li>
-              <li>🏆 <strong>Sistema de ranking</strong> para competir</li>
-              <li>💡 <strong>Pistas úteis</strong> em cada pergunta</li>
-              <li>⭐ <strong>Pontuação progressiva</strong> por acerto</li>
-            </ul>
-          </Card>
-
-          {/* Ranking Button */}
-          <Card className="p-6 bg-white/90 backdrop-blur border-2 border-pink-400 hover:shadow-lg transition-all flex flex-col justify-between">
-            <div>
-              <h3 className="text-2xl font-bold text-pink-700 mb-4 flex items-center gap-2">
-                <Trophy className="w-6 h-6" />
-                Ranking
-              </h3>
-              <p className="text-gray-800 mb-4 font-semibold">
-                Veja as 10 melhores pontuações de todos os jogadores!
-              </p>
-            </div>
-            <Button
-              onClick={() => setShowRanking(true)}
-              className="w-full bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 rounded-lg text-lg"
-            >
-              Ver Ranking 🏅
-            </Button>
-          </Card>
+        {/* Ranking Button - Compacto */}
+        <div className="flex justify-center mb-8">
+          <Button
+            onClick={() => setShowRanking(true)}
+            className="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white font-bold py-3 px-8 rounded-lg text-lg shadow-lg hover:shadow-xl transition-all"
+          >
+            🏅 Ver Ranking
+          </Button>
         </div>
 
         {/* Footer */}
