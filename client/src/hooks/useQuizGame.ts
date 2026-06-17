@@ -23,6 +23,7 @@ export const useQuizGame = (difficulty: 'easy' | 'medium' | 'hard' = 'easy') => 
   });
 
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>([]);
 
   // Carregar perguntas baseado na dificuldade
   useEffect(() => {
@@ -33,7 +34,11 @@ export const useQuizGame = (difficulty: 'easy' | 'medium' | 'hard' = 'easy') => 
     const questionLimit = difficulty === 'easy' ? 100 : difficulty === 'medium' ? 150 : 200;
     const limitedQuestions = shuffled.slice(0, questionLimit);
     
+    // Embaralhar opções de cada pergunta UMA VEZ
+    const questionsWithShuffledOptions = limitedQuestions.map(q => shuffleOptions(q));
+    
     setQuestions(limitedQuestions);
+    setShuffledQuestions(questionsWithShuffledOptions);
     
     // Resetar estado do jogo
     setGameState({
@@ -47,8 +52,7 @@ export const useQuizGame = (difficulty: 'easy' | 'medium' | 'hard' = 'easy') => 
     });
   }, [difficulty]);
 
-  const baseQuestion = questions[gameState.currentQuestionIndex];
-  const currentQuestion = baseQuestion ? shuffleOptions(baseQuestion) : undefined;
+  const currentQuestion = shuffledQuestions[gameState.currentQuestionIndex];
   const totalQuestions = questions.length;
   const progress = totalQuestions > 0 ? ((gameState.currentQuestionIndex + 1) / totalQuestions) * 100 : 0;
 
