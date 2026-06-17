@@ -7,9 +7,9 @@ interface MascotProps {
 export default function Mascot({ state }: MascotProps) {
   const getImageUrl = () => {
     if (state === "thinking") {
-      return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-thinking-VyrmGvzxQsnta9KiHVcofK.webp";
+      return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-thinking-anime-NockQbtokGfKwjLbtnDiKc.webp";
     }
-    return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-happy-assdUjDfH9nyY6HVQTBbLi.webp";
+    return "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/mascot-happy-anime-Lma2gNGkCoffbHni5Xat7G.webp";
   };
 
   const getAnimation = () => {
