@@ -10,15 +10,15 @@
   "background_color": "#ffffff",
   "icons": [
     {
-      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/icon-192-4vzGPqocnYbYKG69zhGcS3.webp",
-      "sizes": "192x192",
+      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/app-icon-hora-ventura-LoLQbmN9RKH5StAvcygowH.webp",
+      "sizes": "1920x1920",
       "type": "image/webp",
       "purpose": "any"
     },
     {
-      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/icon-512-kngWBG39hqzTYrU5sQiXPr.webp",
-      "sizes": "512x512",
-      "type": "image/webp",
+      "src": "https://d2xsxph8kpxj0f.cloudfront.net/310519663592250795/8QXx7zQnM9ZSDCnYaXwbHj/app-icon-hora-ventura-J4NGFbTcuv49c8ThUCDpSq.png",
+      "sizes": "1920x1920",
+      "type": "image/png",
       "purpose": "any"
     }
   ],
@@ -45,8 +45,8 @@
       "url": "/quiz",
       "icons": [
         {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
+          "src": "/app-icon.png",
+          "sizes": "1920x1920"
         }
       ]
     },
@@ -57,8 +57,8 @@
       "url": "/?ranking=true",
       "icons": [
         {
-          "src": "/icon-192.png",
-          "sizes": "192x192"
+          "src": "/app-icon.png",
+          "sizes": "1920x1920"
         }
       ]
     }
