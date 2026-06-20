@@ -269,7 +269,7 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   { id: 247, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Nós vamos" ou "Nós vai"?', options: ['Nós vamos', 'Nós vai', 'Nós vamos', 'Nós vai'], correctAnswer: 0, hint: 'Concordância verbal' },
   { id: 248, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Os meninos correram" ou "Os meninos correu"?', options: ['Os meninos correram', 'Os meninos correu', 'Os meninos correram', 'Os meninos correu'], correctAnswer: 0, hint: 'Concordância verbal' },
   { id: 249, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Nossos livros" ou "Nossos livra"?', options: ['Nossos livros', 'Nossos livra', 'Nossos livros', 'Nossos livra'], correctAnswer: 0, hint: 'Concordância nominal' },
-  { id: 250, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Elas são bonitas" ou "Elas são bonito"?', options: ['Elas são bonitas', 'Elas são bonito', 'Elas são bonitas', 'Elas são bonito'], correctAnswer: 0, hint: 'Concordância nominal' },
+  { id: 250, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Elas são bonitas" ou "Elas são bonito"?', options: ['Elas são bonitas', 'Elas são bonito', 'Elas é bonitas', 'Elas é bonito'], correctAnswer: 0, hint: 'Concordância nominal' },
   { id: 251, category: 'Português', difficulty: 'easy', question: 'Qual é o sinônimo de "triste"?', options: ['Infeliz', 'Alegre', 'Nervoso', 'Cansado'], correctAnswer: 0, hint: 'Emoção negativa' },
   { id: 252, category: 'Português', difficulty: 'easy', question: 'Qual é o antônimo de "claro"?', options: ['Escuro', 'Brilhante', 'Luminoso', 'Transparente'], correctAnswer: 0, hint: 'Oposto' },
   { id: 253, category: 'Português', difficulty: 'easy', question: 'Qual é o plural de "flor"?', options: ['Flores', 'Flor', 'Flora', 'Flore'], correctAnswer: 0, hint: 'Mais de um' },
@@ -286,10 +286,10 @@ export const QUIZ_QUESTIONS: QuizQuestion[] = [
   { id: 264, category: 'Português', difficulty: 'medium', question: 'Qual é o feminino de "ator"?', options: ['Atriz', 'Atore', 'Atora', 'Atrice'], correctAnswer: 0, hint: 'Gênero feminino' },
   { id: 265, category: 'Português', difficulty: 'medium', question: 'Qual é o diminutivo de "gato"?', options: ['Gatinho', 'Gatita', 'Gateta', 'Gateta'], correctAnswer: 0, hint: 'Coisa pequena' },
   { id: 266, category: 'Português', difficulty: 'hard', question: 'Qual é o aumentativo de "olho"?', options: ['Olhão', 'Olhão', 'Olhota', 'Olharra'], correctAnswer: 0, hint: 'Coisa grande' },
-  { id: 267, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Eles vão" ou "Eles vai"?', options: ['Eles vão', 'Eles vai', 'Eles vão', 'Eles vai'], correctAnswer: 0, hint: 'Concordância verbal' },
+  { id: 267, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Eles vão" ou "Eles vai"?', options: ['Eles vão', 'Eles vai', 'Ele vai', 'Ele vão'], correctAnswer: 0, hint: 'Concordância verbal' },
   { id: 268, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "As meninas correram" ou "As meninas correu"?', options: ['As meninas correram', 'As meninas correu', 'As meninas correram', 'As meninas correu'], correctAnswer: 0, hint: 'Concordância verbal' },
   { id: 269, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Vossas casas" ou "Vossas casa"?', options: ['Vossas casas', 'Vossas casa', 'Vossas casas', 'Vossas casa'], correctAnswer: 0, hint: 'Concordância nominal' },
-  { id: 270, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Eles são altos" ou "Eles são alta"?', options: ['Eles são altos', 'Eles são alta', 'Eles são altos', 'Eles são alta'], correctAnswer: 0, hint: 'Concordância nominal' },
+  { id: 270, category: 'Português', difficulty: 'hard', question: 'Qual é a forma correta: "Eles são altos" ou "Eles são alta"?', options: ['Eles são altos', 'Eles são alta', 'Ele é alto', 'Ele é alta'], correctAnswer: 0, hint: 'Concordância nominal' },
 
   // ESPORTES - 30 perguntas
   { id: 271, category: 'Esportes', difficulty: 'easy', question: 'Quantos jogadores tem um time de futebol em campo?', options: ['11', '10', '12', '9'], correctAnswer: 0, hint: 'Incluindo o goleiro' },
